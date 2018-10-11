@@ -73,6 +73,6 @@ class receipt {
     System.out.println(price2PlusTax);
     System.out.println(price3PlusTax);
     System.out.println(totalTaxes);
-    System.out.println(total);
+    System.out.println(round.result(total));
   };
 };
