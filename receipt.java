@@ -5,13 +5,14 @@ class receipt {
     Scanner input = new Scanner(System.in);
     isTaxable taxable = new isTaxable();
     addTax tax = new addTax();
-    roundToTheNearest05 roundPrice = new roundToTheNearest05();
+    roundToNearest05 round = new roundToNearest05();
 
     String item1, item2, item3;
     Boolean item1Taxable, item2Taxable, item3Taxable;
     Double price1, price2, price3;
     Double price1PlusTax, price2PlusTax, price3PlusTax;
-    Double taxes = 0.0;
+    Double taxes;
+    Double totalTaxes = 0.0;
     Double total = 0.0;
 
     System.out.println("Welcome to tax calculator");
@@ -40,24 +41,27 @@ class receipt {
     item3Taxable = taxable.result(item3);
 
     if (item1Taxable) {
-      price1PlusTax = tax.result(price1);
-      taxes += price1PlusTax - price1;
+      taxes = round.result(tax.result(price1));
+      price1PlusTax = price1 + taxes;
+      totalTaxes += taxes;
     } else {
       price1PlusTax = price1;
     }
     ;
 
     if (item2Taxable) {
-      price2PlusTax = tax.result(price2);
-      taxes += price1PlusTax - price1;
+      taxes = round.result(tax.result(price2));
+      price2PlusTax = price2 + taxes;
+      totalTaxes += taxes;
     } else {
       price2PlusTax = price2;
     }
     ;
 
     if (item3Taxable) {
-      price3PlusTax = tax.result(price3);
-      taxes += price1PlusTax - price1;
+      taxes = round.result(tax.result(price3));
+      price3PlusTax = price3 + taxes;
+      totalTaxes += taxes;
     } else {
       price3PlusTax = price3;
     }
@@ -65,10 +69,10 @@ class receipt {
 
     total = price1PlusTax + price2PlusTax + price3PlusTax;
 
-    System.out.println(roundPrice.result(price1PlusTax));
-    System.out.println(roundPrice.result(price2PlusTax));
-    System.out.println(roundPrice.result(price3PlusTax));
-    System.out.println(roundPrice.result(taxes));
-    System.out.println(roundPrice.result(total));
+    System.out.println(price1PlusTax);
+    System.out.println(price2PlusTax);
+    System.out.println(price3PlusTax);
+    System.out.println(totalTaxes);
+    System.out.println(total);
   };
 };

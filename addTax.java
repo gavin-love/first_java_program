@@ -1,5 +1,6 @@
 class addTax {
   public Double result(Double price) {
-    return price * 1.10;
+    Double tax = price * .10;
+    return tax;
   }
 }
