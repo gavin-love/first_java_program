@@ -42,7 +42,7 @@ class receipt {
 
     if (item1Taxable) {
       taxes = round.result(tax.result(price1));
-      price1PlusTax = price1 + taxes;
+      price1PlusTax = round.result(price1 + taxes);
       totalTaxes += taxes;
     } else {
       price1PlusTax = price1;
@@ -51,7 +51,7 @@ class receipt {
 
     if (item2Taxable) {
       taxes = round.result(tax.result(price2));
-      price2PlusTax = price2 + taxes;
+      price2PlusTax = round.result(price2 + taxes);
       totalTaxes += taxes;
     } else {
       price2PlusTax = price2;
@@ -60,19 +60,24 @@ class receipt {
 
     if (item3Taxable) {
       taxes = round.result(tax.result(price3));
-      price3PlusTax = price3 + taxes;
+      price3PlusTax = round.result(price3 + taxes);
       totalTaxes += taxes;
     } else {
       price3PlusTax = price3;
     }
     ;
 
-    total = price1PlusTax + price2PlusTax + price3PlusTax;
+    totalTaxes = round.result(totalTaxes);
+    total = round.result(price1PlusTax + price2PlusTax + price3PlusTax);
 
-    System.out.println(price1PlusTax);
-    System.out.println(price2PlusTax);
-    System.out.println(price3PlusTax);
-    System.out.println(totalTaxes);
-    System.out.println(round.result(total));
+    System.out.print(item1 + ": \t\t");
+    System.out.println("$" + price1PlusTax);
+    System.out.print(item2 + ": \t\t");
+    System.out.println("$" + price2PlusTax);
+    System.out.print(item3 + ": \t\t");
+    System.out.println("$" + price3PlusTax);
+    System.out.println("_________________________");
+    System.out.println("sales tax: \t$" + totalTaxes);
+    System.out.println("total: \t\t$" + total);
   };
 };
